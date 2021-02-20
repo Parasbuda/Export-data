@@ -58,6 +58,7 @@ import Table from "./Table";
 class App extends React.Component {
   state = {
     customers: [],
+    show:false
   };
   customers = () => {
     let custs = [];
@@ -82,8 +83,8 @@ class App extends React.Component {
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
     const orientation = "portrait"; // portrait or landscape
-
-    const doc = new jsPDF(orientation, unit, size);
+  
+    const doc = new jsPDF(orientation, unit, size,);
 
     doc.setFontSize(15);
 
@@ -91,7 +92,7 @@ class App extends React.Component {
     const address = "Bhimsengola Kathmandu";
     const report = "customer report";
     const headers = [
-      ["S.N", "FirstName", "LastName", "Email", "Address", "Zipcode"],
+      ["S.N", "FirstName", "LastName", "Email", "Address", "Zipcode","Price"],
     ];
 
     const data = this.state.customers.map((customer, i) => [
@@ -107,8 +108,9 @@ class App extends React.Component {
       startY: 100,
       head: headers,
       body: data,
+    
     };
-
+    
     doc.text(title, 230, 42);
     doc.text(address, 215, 57);
     doc.text(report, 240, 72);
@@ -119,9 +121,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button className="btn btn-secondary" onClick={() => this.exportPDF()}>Generate PDF</button>
-        <ReactHTMLTableToExcel
-          id="test-table-xls-button"
+        <button className="btn btn-secondary" onClick={() => this.exportPDF()}>
+          Generate PDF
+        </button>
+        <ReactHTMLTableToExcel 
           component={Table}
           className="download-table-xls-button ml-5 btn btn-primary"
           table="table-to-xls"
@@ -129,7 +132,13 @@ class App extends React.Component {
           sheet="tablexls"
           buttonText="Generate Excel"
         />
-        <Table customers={this.state.customers}/>
+        <button
+          className="btn btn-warning"
+          onClick={()=>this.setState({ show: !this.state.show })}
+        >
+          Quick Report
+        </button>
+        {this.state.show?<Table customers={this.state.customers}/>:null}
       </div>
     );
   }

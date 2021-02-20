@@ -2,51 +2,52 @@ import React from 'react'
 
 const Table = ({customers}) => {
     return (
-        <table  id="table-to-xls" className="table  table-bordered table-hover">
+        <table  id="table-to-xls" className="table  table-bordered table-hover mt-5">
 
-            <tr className="text-center ">
-              <th colspan="6">Meraki techs pvt ltd</th>
+            <tr className="text-center " >
+              <th colspan="6" >Meraki techs pvt ltd</th>
               </tr>
-              <tr className="text-center">
-              <th colspan="6">Bhimsengola Kathmandu</th>
+              <tr className="text-center" >
+              <th colspan="6" >Bhimsengola Kathmandu</th>
               </tr>
-              <tr className="text-center">
+              <tr className="text-center" >
               <th colspan="6">2000-4556-123</th>
               </tr>
-              <tr className="text-center">
+              <tr className="text-center" >
               <th colspan="6">Purchase Sheet (Summary)</th>
               </tr>
-              <tr >
-              <th className="text-center">Date Range</th>
+              <tr  >
+              <th className="text-center" >Date Range</th>
               <td></td>
               <th></th>
               <th></th>
               <th></th>
               <th></th>
               </tr>
-              <tr >
-              <th>B.S</th>
-              <td>2073/3/10 to 2077/1/10</td>
+              <tr  >
+              <th >B.S</th>
+              <td style={{fontSize:14}} >2073/3/10 to 2077/1/10</td>
               <th></th>
               <th></th>
               <th></th>
               <th></th>
               </tr>
               <tr >
-              <th>A.D</th>
-              <td>2019/3/10 to 2020/2/10</td>
+              <th >A.D</th>
+              <td style={{fontSize:14}}>2019/3/10 to 2020/2/10</td>
               <th></th>
               <th></th>
               <th></th>
               <th></th>
               </tr>
           <tr>
-            <th>#</th>
+            <th>S.N</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Address</th>
             <th>Zipcode</th>
+            <th>Price</th>
           </tr>
          
           <tbody >  
@@ -64,6 +65,10 @@ const Table = ({customers}) => {
              )
            })):null
   }
+  <tr className="d-none">
+    <th></th>
+    <th>total</th>
+  </tr>
           </tbody>
         </table> 
     )
